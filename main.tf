@@ -9,7 +9,7 @@ resource "aws_instance" "web" {
 	ami				= ""
 	instance_type			= "t2.micro"
 	tags = {
-		name = linuxtest"
+		name = linuxtest2"
 	}
 	key_name			= "yolo"
 }
