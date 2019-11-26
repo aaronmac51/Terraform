@@ -1,15 +1,29 @@
+variable "region" {
+}
+
+variable "shared_creds" {
+}
+
+variable "profile" {
+}
+
+variable "my_ami" {
+  type = map(string)
+}
+
 provider "aws" {
-	version	 			= "-> 2.0"
-	region				= "us-west-2"
-	shared_credentials_file 	= "/home/aaronmac5.aws/credentials"
-	profile 			= "terraform"
+  version                 = "~> 2.0"
+  region                  = var.region
+  shared_credentials_file = var.shared_creds
+  profile                 = var.profile
 }
 
 resource "aws_instance" "web" {
-	ami				= ""
-	instance_type			= "t2.micro"
-	tags = {
-		name = linuxtest2"
-	}
-	key_name			= "yolo"
+  ami           = var.my_ami[var.region]
+  instance_type = "t2.micro"
+  tags = {
+    name = "windows2019"
+  }
+  key_name = "yolo"
 }
+.
